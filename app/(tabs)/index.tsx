@@ -1,13 +1,16 @@
 import { Text, View, StyleSheet } from "react-native";
 import { Link } from "expo-router";
+import { Button } from "react-native-paper";
+import { useAuth } from "@/lib/auth-context";
 
 export default function Index() {
+  const {signOut} = useAuth()
   return (
     <View
       style={styles.view}
     >
       <Text>Home Page</Text>
-      <Link href="/login" style={styles.link}>Login Page</Link>
+      <Button onPress={signOut} style={styles.link} icon={"logout"}>Sign Out</Button>
     </View>
   );
 }
@@ -20,7 +23,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   link: {
-    padding: 10 ,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
     backgroundColor: "coral" , 
     borderRadius: 5,
     color: "white", 
